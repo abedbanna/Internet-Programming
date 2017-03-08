@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+</head>
+<body>
+<table align="center">
+    <!--Start Form-->
+    <form action="login.php" method="get" >
+    <tr><td>Username</td><td><input type="text" name="txtUserName"></td></tr>
+    <tr><td>Password</td><td><input type="password" name="txtPassword"></td></tr>
+    <tr><td>Role</td><td>
+        <select name="cboRole">
+            <option value="A">Admin</option>
+            <option value="U">User</option>
+
+        </select>
+
+    </td></tr>
+    <tr><td colspan="2" align="center"><input type="submit" value="Login">
+    <input type="reset" value="Cancel" >
+    </td></tr>
+
+    </form>
+    <!--End Form-->
+</table>
+</body>
+</html>
