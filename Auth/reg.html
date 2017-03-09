@@ -16,47 +16,54 @@
 </head>
 <body>
 <table align="center">
-<!--Start Form-->
-<form action="login.php" method="get" >
-    <tr><td>Username</td><td><input type="text" name="txtUserName" class="txt"></td></tr>
-    <tr><td>Password</td><td><input type="password" name="txtPassword" class="txt"></td></tr>
-    <tr><td>Role</td><td>
-        <select name="cboRole" class="txt">
-            <option value="A">Admin</option>
-            <option value="U">User</option>
+    <!--Start Form-->
+    <form action="login.php" method="get" >
+        <tr><td>Username</td><td><input type="text" name="txtUserName" class="txt"></td></tr>
+        <tr><td>Password</td><td><input type="password" name="txtPassword" class="txt"></td></tr>
+        <tr><td>Role</td><td>
+            <select name="cboRole" class="txt">
+                <option value="A">Admin</option>
+                <option value="U">User</option>
 
-        </select>
+            </select>
 
-    </td></tr>
-    <tr><td colspan="2"><hr></td></tr>
+        </td></tr>
+        <tr><td colspan="2"><hr></td></tr>
 
-   <tr><td>First Name</td><td><input type="text" name="txtFName" placeholder="Your Name"></td></tr>
-    <tr><td>Last Name</td><td><input type="text" name="txtLName" placeholder="Last Name"></td></tr>
-<tr><td>DOB</td><td><input type="date"></td></tr>
-<tr><td>Gender</td><td><input type="radio" value="m" name="rdoGender" >Male
-<input type="radio" value="f" name="rdoGender" >Female
-</td></tr>
-    <tr><td colspan="2"><hr></td></tr>
+        <tr><td>First Name</td><td><input type="text" name="txtFName" placeholder="Your Name"></td></tr>
+        <tr><td>Last Name</td><td><input type="text" name="txtLName" placeholder="Last Name"></td></tr>
+        <tr><td>DOB</td><td><input type="date"></td></tr>
+        <tr><td>Gender</td><td><input type="radio" value="m" name="rdoGender" >Male
+            <input type="radio" value="f" name="rdoGender" >Female
+        </td></tr>
+        <tr>
+            <td>Experience</td>
+            <td>
+                <input type="number" min="1" max="10" step="1">
 
-<tr><td>Email</td><td><input type="email" placeholder="info@test.com"></td></tr>
-    <tr><td>URL</td><td><input type="url" placeholder="http://www.google.com"></td></tr>
-<tr>
-    <td>
-        Languages
-    </td>
-    <td>
-        <table>
-           <tr> <td><input type="checkbox" value="Java" name="chkLang">Java</td></tr>
-            <tr>  <td><input type="checkbox" value="C++" name="chkLang">C++</td></tr>
-            <tr><td><input type="checkbox" value="Python" name="chkLang">Python</td></tr>
-        </table>
-    </td>
-</tr>
-    <tr><td colspan="2" align="center"><input type="submit" value="Login">
-        <input type="reset" value="Cancel" >
-    </td></tr>
-</form>
-<!--End Form-->
+            </td>
+        </tr>
+        <tr><td colspan="2"><hr></td></tr>
+
+        <tr><td>Email</td><td><input type="email" placeholder="info@test.com"></td></tr>
+        <tr><td>URL</td><td><input type="url" placeholder="http://www.google.com"></td></tr>
+        <tr>
+            <td>
+                Languages
+            </td>
+            <td>
+                <table>
+                    <tr> <td><input type="checkbox" value="Java" name="chkLang">Java</td></tr>
+                    <tr>  <td><input type="checkbox" value="C++" name="chkLang">C++</td></tr>
+                    <tr><td><input type="checkbox" value="Python" name="chkLang">Python</td></tr>
+                </table>
+            </td>
+        </tr>
+        <tr><td colspan="2" align="center"><input type="submit" value="Login">
+            <input type="reset" value="Cancel" >
+        </td></tr>
+    </form>
+    <!--End Form-->
 </table>
 </body>
 </html>
