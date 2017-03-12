@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #testPlain
+        {
+            border: double;
+        }
+    </style>
+</head>
+<body>
+<div>
+<input type="button" onclick="drawLine()" value="Draw Line">
+    <input type="button" onclick="drawRectangle()" value="Draw Recatangle">
+    <input type="button" onclick="drawLine()" value="Draw Arc">
+    <input type="button" onclick="drawCircle()" value="Draw Circle">
+    <input type="button" onclick="drawString()" value="Draw String">
+
+</div>
+<div>
+<canvas id="testPlain" width="400" height="400">
+</canvas>
+</div>
+
+</canvas>
+<script>
+    var can=document.getElementById("testPlain");
+
+    var context=can.getContext("2d");
+
+ function drawLine() {
+     context.moveTo(200,200);
+     context.lineTo(0,0);
+     context.stroke();
+ }
+    function drawRectangle() {
+     context.fillStyle="#f555ff";
+        context.fillRect(100,100,100,100)
+    }
+    function drawCircle() {
+     context.fillStyle="#fff";
+     context.fillRect(0,0,400,400);
+        context.fillStyle="#f555ff";
+        context.arc(100,100,50,1.5*Math.PI,0);
+        context.stroke();
+    }
+
+    function drawString() {
+        context.fillStyle="#fff";
+        context.fillRect(0,0,400,400);
+        context.fillStyle="#f555ff";
+        context.font="30px Arial";
+        context.fillText("Welcome Back",100,100);
+
+    }
+</script>
+</body>
+</html>
