@@ -2,30 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Video Player</title>
-
+    <title>My Video Player</title>
 </head>
 <body>
 <div>
-    <input type="button" value="Start/Pause" onclick="play()">
-    <input type="button" value="Large" onclick="big()">
+    <input type="button" onclick="play()" value="Play/Pause">
+    <input type="button" value="Small" onclick="small()">
+    <input type="button" value="Big " onclick="big()">
 </div>
-<video  id="myVideo" width="400" height="400">
-    <source src="mov_bbb.mp4">
-this Browser not support HTML 5
+<div>
+<video width="600" height="400" id="myVideo">
+    <source src="test.mp4">
+    Your browser does not support the video tag.
 </video>
+    <iframe width="100" height="100" src="https://www.youtube.com/embed/36BB-qS1lgk" frameborder="0" allowfullscreen></iframe>
+</div>
 <script>
     var v=document.getElementById("myVideo");
-    function play()
-    {alert('hi');
-        if(v.paused)
-            v.play();
-        else
-            v.pause();
+    function play() {
+     if(v.paused)
+         v.play();
+     else
+         v.pause();
+
+    // alert('Ok');
+    }
+
+    function small()
+    {
+        v.width=100;
+
+
     }
     function big()
     {
-v.width=800;
+        v.width=900;
+
 
     }
 </script>
