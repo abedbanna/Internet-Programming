@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Video Player</title>
+
+</head>
+<body>
+<div>
+    <input type="button" value="Start/Pause" onclick="play()">
+    <input type="button" value="Large" onclick="big()">
+</div>
+<video  id="myVideo" width="400" height="400">
+    <source src="mov_bbb.mp4">
+this Browser not support HTML 5
+</video>
+<script>
+    var v=document.getElementById("myVideo");
+    function play()
+    {alert('hi');
+        if(v.paused)
+            v.play();
+        else
+            v.pause();
+    }
+    function big()
+    {
+v.width=800;
+
+    }
+</script>
+</body>
+</html>
