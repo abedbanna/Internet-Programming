@@ -2,43 +2,56 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Video Player</title>
+    <title>Video Player</title>
 </head>
 <body>
 <div>
-    <input type="button" onclick="play()" value="Play/Pause">
+    <input type="button" value="Play/Pause" onclick="play()">
     <input type="button" value="Small" onclick="small()">
-    <input type="button" value="Big " onclick="big()">
+    <input type="button" value="Big" onclick="big()">
 </div>
 <div>
-<video width="600" height="400" id="myVideo">
-    <source src="test.mp4">
-    Your browser does not support the video tag.
-</video>
-    <iframe width="100" height="100" src="https://www.youtube.com/embed/36BB-qS1lgk" frameborder="0" allowfullscreen></iframe>
+    <table>
+        <tr><td><video width="400" height="400" id="myVideo">
+            <source src="albanna.mp4">
+            this Browser not support HTmL5
+        </video></td>
+            <td><video width="400" height="400" id="myVideo" controls>
+                <source src="albanna.mp4">
+                this Browser not support HTmL5
+            </video></td>
+            <td><video width="400" height="400" id="myVideo" controls>
+                <source src="albanna.mp4">
+                this Browser not support HTmL5
+            </video></td>
+
+        </tr>
+<tr>
+    <td><iframe width="400" height="315" src="https://www.youtube.com/embed/_y31D9uz6V8" frameborder="0" allowfullscreen></iframe></td>
+    <td><iframe width="400" height="315" src="https://www.youtube.com/embed/_y31D9uz6V8" frameborder="0" allowfullscreen></iframe></td>
+    <td><iframe width="400" height="315" src="https://www.youtube.com/embed/_y31D9uz6V8" frameborder="0" allowfullscreen></iframe></td>
+    
+</tr>
+    </table>
+
+
 </div>
 <script>
     var v=document.getElementById("myVideo");
+
     function play() {
-     if(v.paused)
-         v.play();
-     else
-         v.pause();
-
-    // alert('Ok');
+        if(v.paused)
+            v.play();
+        else
+            v.pause();
     }
-
     function small()
     {
         v.width=100;
-
-
     }
     function big()
     {
         v.width=900;
-
-
     }
 </script>
 </body>
