@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <script src="source.js"></script>
+</head>
+<body>
+<table align="center">
+    <!--Start Form-->
+    <form action="login.php" method="get"  name="frm">
+        <tr><td>Username</td><td><input type="text" name="txtUserName"></td></tr>
+        <tr><td>Password</td><td><input type="password" name="txtPassword"></td></tr>
+        <tr><td colspan="2">
+            <div id="msg">
+
+            </div>
+
+        </td></tr>
+        <tr><td colspan="2" align="center"><input type="button" value="Login" onclick="checkUser()">
+            <input type="reset" value="Cancel" >
+        </td></tr>
+
+    </form>
+    <!--End Form-->
+</table>
+</body>
+</html>

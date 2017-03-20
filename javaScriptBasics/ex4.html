@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function factorial() {
+            var n=prompt("Enter N Value",5);
+
+            var f=1;
+            for(var i=1;i<=n;i++)
+                f*=i;
+            alert(f);
+        }
+        function checkEvenOdd() {
+            var n=prompt("Enter Number",90);
+            if(n%2==0)
+                alert("Even Number");
+            else
+                alert("Odd Number");
+        }
+function isPrime(n) {
+
+    for(var i=2;i<n;i++)
+        if(n%i==0)
+    return false;
+    return true;
+
+}
+function printPrime() {
+    var counter=1;
+    var n=1;
+    var r=document.getElementById("r");
+    while(counter<=1000)
+    {
+        if(isPrime(n))
+        {
+            counter++;
+            r.innerHTML=r.innerHTML +n+"<br>";
+        }
+        n++;
+    }
+
+}
+function printN() {
+    for(var i=1;i<=50;i++)
+        document.getElementById("r").innerHTML=document.getElementById("r").innerHTML+i+"<br>";
+}
+    </script>
+</head>
+<body>
+<input type="button" value="Factorial" onclick="factorial()">
+<input type="button" value="Check Even/Odd" onclick="checkEvenOdd()">
+<input type="button" value="Print First 1000 Prime" onclick="printPrime()">
+<input type="button" value="Print First 50 N Number" onclick="printN()">
+<div id="r">
+
+</div>
+</body>
+</html>

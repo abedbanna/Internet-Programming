@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example 2</title>
+    <script>
+
+        function add()
+        {
+            var no1= parseInt(document.frm.txtNo1.value);
+            var no2=parseInt(document.frm.txtNo2.value);
+            var r=no1+no2;
+            document.frm.txtResult.value=r;
+        }
+        function sub()
+        {
+            var no1=prompt("Enter No1",10);
+            var no2=prompt("Enter No2",10);
+            var r=no1-no2;
+            document.frm.txtResult.value=r;
+        }
+        function mul()
+        {
+            var no1=prompt("Enter No1",10);
+            var no2=prompt("Enter No2",10);
+            var r=no1*no2;
+            alert(r);
+        }
+        function div()
+        {
+            var no1=prompt("Enter No1",10);
+            var no2=prompt("Enter No2",10);
+            var r=no1/no2;
+        document.writeln(r);
+        }
+    </script>
+</head>
+<body>
+<form name="frm">
+    <table align="center">
+        <tr><td>No1</td><td><input type="text" name="txtNo1"></td></tr>
+        <tr><td>No2</td><td><input type="text" name="txtNo2"></td></tr>
+        <tr><td>Result</td><td><input type="text" name="txtResult"></td></tr>
+        <tr><td colspan="2">
+            <input type="button" value="+" onclick="add()">
+            <input type="button" value="-" onclick="sub()">
+            <input type="button" value="*" onclick="mul()">
+            <input type="button" value="/" onclick="div()">
+        </td></tr>
+    </table>
+</form>
+</body>
+</html>
