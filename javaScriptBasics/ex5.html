@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>String</title>
+    <script>
+        function printString()
+        {
+            var str="";
+            str=document.getElementById("txt").value;
+var temp=""
+    var c="";
+           for(var i=0;i<str.length;i++) {
+               if (i % 2 == 0)
+                   c = str[i].toUpperCase();
+               else
+                   c = str[i].toLowerCase();
+           temp+=c;
+           }
+     document.getElementById("myDiv").innerHTML=temp;
+
+        }
+
+    </script>
+</head>
+<body>
+<input type="text" id="txt" value="abed">
+<input type="button" id="btnCheck" value="Print" onclick="printString()">
+<div id="myDiv">
+    ---
+
+</div>
+</body>
+</html>

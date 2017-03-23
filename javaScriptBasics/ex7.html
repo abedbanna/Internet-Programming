@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <titlePalindrome</title>
+    <script>
+        function checkPalindrome() {
+            var str = document.getElementById("txt").value;
+            var str2 = "";
+            for (var i=str.length-1;i>=0;i--){
+                str2 += str.charAt(i);
+            }
+            if (str == str2) {
+                alert("String is palindrome");
+            }
+            else {
+                alert("String is NOT palindrome");
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="text" id="txt">
+<input type="button" value="Check" onclick="checkPalindrome()">
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .d
+        {
+            font-size: 180px;
+            color: green;
+            background-color: black;
+            text-align: center;
+            width:300px;
+        }
+    </style>
+    <script>
+        var tim;
+        function start() {
+            tim=setInterval(function () {
+                var x= parseInt(Math.random()*100);
+document.getElementById("mydiv").innerHTML=x;
+            }, 50);
+        }
+        function stop() {
+
+            clearInterval(tim);
+        }
+    </script>
+</head>
+<body>
+<input type="button"  value="Start" onclick="start()">
+<input type="button"  value="Stop" onclick="stop()">
+<div class="d" id="mydiv">
+    0
+</div>
+
+</body>
+</html>

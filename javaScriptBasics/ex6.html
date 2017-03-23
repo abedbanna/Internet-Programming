@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Email</title>
+    <script>
+        function checkEmail()
+        {
+            var str=document.getElementById("txt").value;
+            if(str.indexOf("@") >-1 && str.indexOf(".")>0)
+                alert("Valid Email")
+            else
+                alert("invalid Email")
+        }
+
+    </script>
+</head>
+<body>
+<input type="text" id="txt">
+<input value="Check" type="button" onclick="checkEmail()">
+</body>
+</html>

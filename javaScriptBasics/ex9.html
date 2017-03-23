@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example 9</title>
+    <script>
+        function abs() {
+            var no=document.getElementById("txtNo").value;
+            alert(Math.abs(no));
+        }
+function power() {
+    var no=document.getElementById("txtNo").value;
+    alert(Math.pow(no,2));
+}
+
+function max1()
+        {
+            var b = Math.max(0, 150, 30, 20, 38);
+            alert(b);
+
+
+        }
+
+        function min1()
+        {
+            var b = Math.min(0, 150, 30, 20, 38);
+            alert(b);
+
+
+        }
+
+        function random() {
+            alert(parseInt(Math.random()*10)+1);
+        }
+        function round() {
+            var no=document.getElementById("txtNo").value;
+            alert(Math.round(no));
+        }
+
+        function floor() {
+            var no=document.getElementById("txtNo").value;
+            alert(Math.floor(no));
+        }
+        function ceil() {
+            var no=document.getElementById("txtNo").value;
+            alert(Math.ceil(no));
+        }
+    </script>
+
+</head>
+<body>
+<input type="text" value="10" id="txtNo">
+
+<input type="button" value="Abs" onclick="abs()">
+<input type="button" value="Power" onclick="power()">
+<input type="button" value="Max" onclick="max1()">
+<input type="button" value="Min" onclick="min1()">
+<input type="button" value="Random" onclick="random()">
+<input type="button" value="Round" onclick="round()">
+<input type="button" value="Floor" onclick="floor()">
+<input type="button" value="Ceil" onclick="ceil()">
+</body>
+</html>
