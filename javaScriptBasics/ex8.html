@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Guess Game</title>
+    <style>
+        body {
+            background-image: url("Images/background.jpg");
+            background-size: cover;
+        }
+
+        .text {
+            font-weight: bolder;
+            font-size: 26px;
+        }
+        .number {
+            color: darkslateblue;
+            font-size: 26px;
+            font-weight: bolder;
+            padding-left: 3px;
+        }
+        header {
+            background-color: chocolate;
+            height: 120px;
+            width: 60%;
+            margin-left: 20%;
+            margin-right: 20%;
+            margin-top: 5%;
+        }
+        #game {
+            background-color: green;
+            height: 300px;
+            width: 80%;
+            margin-left: 10%;
+            margin-right: 10%;
+            border: solid peachpuff 10px;
+        }
+        .Xoff {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            color: gray;
+            font-size: 2em;
+            font-weight: bold;
+            text-align: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+        }
+        .Xon {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            color: red;
+            font-size: 2em;
+            font-weight: bold;
+            text-align: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+        }
+        input[type="text"] {
+            width: 30px;
+            height: 30px;
+            background-color: red;
+            border: solid darkgray;
+            font-size: 24px;
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+            margin-left: 4px;
+        }
+        .disabled {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border: solid darkgray;
+            font-size: 24px;
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+            margin-left: 4px;
+        }
+        .disabledCorrect {
+            width: 50px;
+            height: 50px;
+            background-color: green;
+            border: solid darkgray;
+            font-size: 24px;
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+            margin-left: 4px;
+        }
+        .letter {
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+            border: solid darkgray;
+            font-size: 24px;
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+            margin-left: 4px;
+        }
+        .txtLetter {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border: solid darkgray;
+            font-size: 24px;
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+            margin-left: 4px;
+        }
+    </style>
+    <script>
+        var start = 0;
+        var mistakes = 0;
+        var correct = 0;
+        var container = document.getElementById("divWord");
+        var hintContainer = document.getElementById("question");
+        var words = [
+            ["Object you use for writing", "PEN"],
+            ["Object you use for talking", "MICROPHONE"],
+            ["Something more useful when it's broken", "EGG"],
+            ["Almost everyone sees me without noticing me, What am I?","WINDOW"],
+            ["Which word can be placed between the two following words to make two new ones: TABLE - - - - HOUSE","WARE"]
+        ];
+        var wordIndex;
+        var word;
+        function generateWord() {
+            if (start!=0) {
+                for (var i=0;i<5;i++) {
+                    var X = document.getElementById("X"+i).className="Xoff";
+                }
+                for (i=65;i<=90;i++)  {
+                    var btnLetter = document.getElementById(String.fromCharCode(i));
+                    btnLetter.className="letter";
+                    btnLetter.removeAttribute("disabled");
+                }
+                mistakes=0;
+                correct = 0;
+                document.getElementById("score").innerHTML="0";
+
+            }
+            start++;
+            wordIndex = parseInt(Math.random()*words.length);
+            word = words[wordIndex][1];
+            var hint = words[wordIndex][0];
+            container = document.getElementById("divWord");
+            hintContainer = document.getElementById("question");
+            hintContainer.innerHTML = hint;
+            while (container.firstChild) {
+                container.removeChild(container.firstChild);
+            }
+            for(i=0;i<word.length;i++) {
+                var input = document.createElement("input");
+                input.type = "text";
+                input.id = "letter" + (i + 1);
+                input.className = "txtLetter";
+                input.setAttribute("disabled", "true");
+                input.dataset.value = word.charAt(i);
+                container.appendChild(input);
+            }
+        }
+
+        function checkLetter(value) {
+            var found = false;
+            switch (value) {
+                case "A":
+                    for(var i=0;i<word.length;i++) {
+                        if (word.charAt(i) == "A") {
+                            revealLetter(i,"A");
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        wrongGuess("A");
+                    }
+                    break;
+
+                case "B":
+                    for(i=0;i<word.length;i++) {
+                        if (word.charAt(i) == "B") {
+                            revealLetter(i,"B");
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        wrongGuess("B");
+                    }
+                    break;
+
+                case "C":
+                    for(i=0;i<word.length;i++) {
+                        if (word.charAt(i) == "C") {
+                            revealLetter(i,"C");
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        wrongGuess("C");
+                    }
+                    break;
+
+                case "D":
+                    for(i=0;i<word.length;i++) {
+                        if (word.charAt(i) == "D") {
+                            revealLetter(i,"D");
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        wrongGuess("D");
+                    }
+                    break;
+
+                case "E":
+                    for(i=0;i<word.length;i++) {
+                        if (word.charAt(i) == "E") {
+                            revealLetter(i,"E");
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        wrongGuess("E");
+                    }
+                    break;
+
+                case "F":
+                    for(i=0;i<word.length;i++) {
+                        if (word.charAt(i) == "F") {
+                            revealLetter(i,"F");
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        wrongGuess("F");
+                    }
+                    break;
+
+                case "G":
+                    for(i=0;i<word.length;i++) {
+                        if (word.charAt(i) == "G") {
+                            revealLetter(i,"G");
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        wrongGuess("G");
+                    }
+                    break;
+
+                case "H":
+                    for(i=0;i<word.length;i++) {
+                        if (word.charAt(i) == "H") {
+                            revealLetter(i,"H");
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        wrongGuess("H");
+                    }
+                    break;
+
+                case "I":
+                    for(i=0;i<word.length;i++) {
+                        if (word.charAt(i) == "I") {
+                            revealLetter(i,"I");
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        wrongGuess("I");
+                    }
+                    break;
+
+                case "J":
+                    for(i=0;i<word.length;i++) {
+                        if (word.charAt(i) == "J") {
+                            revealLetter(i,"J");
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        wrongGuess("J");
+                    }
+                    break;
+
+                case "K":
+                    for(i=0;i<word.length;i++) {
+                        if (word.charAt(i) == "K") {
+                            revealLetter(i,"K");
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        wrongGuess("K");
+                    }
+                    break;
+
+                case "L":
+                    for(i=0;i<word.length;i++) {
+                        if (word.charAt(i) == "L") {
+                            revealLetter(i,"L");
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        wrongGuess("L");
+                    }
+                    break;
+
+                case "M":
+                    for(i=0;i<word.length;i++) {
+                        if (word.charAt(i) == "M") {
+                            revealLetter(i,"M");
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        wrongGuess("M");
+                    }
+                    break;
+
+                case "N":
+                    for(i=0;i<word.length;i++) {
+                        if (word.charAt(i) == "N") {
+                            revealLetter(i,"N");
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        wrongGuess("N");
+                    }
+                    break;
+
+                case "O":
+                    for(i=0;i<word.length;i++) {
+                        if (word.charAt(i) == "O") {
+                            revealLetter(i,"O");
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        wrongGuess("O");
+                    }
+                    break;
+
+                case "P":
+                    for(i=0;i<word.length;i++) {
+                        if (word.charAt(i) == "P") {
+                            revealLetter(i,"P");
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        wrongGuess("P");
+                    }
+                    break;
+
+                case "Q":
+                    for(i=0;i<word.length;i++) {
+                        if (word.charAt(i) == "Q") {
+                            revealLetter(i,"Q");
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        wrongGuess("Q");
+                    }
+                    break;
+
+                case "R":
+                    for(i=0;i<word.length;i++) {
+                        if (word.charAt(i) == "R") {
+                            revealLetter(i,"R");
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        wrongGuess("R");
+                    }
+                    break;
+
+                case "S":
+                    for(i=0;i<word.length;i++) {
+                        if (word.charAt(i) == "S") {
+                            revealLetter(i,"S");
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        wrongGuess("S");
+                    }
+                    break;
+
+                case "T":
+                    for(i=0;i<word.length;i++) {
+                        if (word.charAt(i) == "T") {
+                            revealLetter(i,"T");
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        wrongGuess("T");
+                    }
+                    break;
+
+                case "U":
+                    for(i=0;i<word.length;i++) {
+                        if (word.charAt(i) == "U") {
+                            revealLetter(i,"U");
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        wrongGuess("U");
+                    }
+                    break;
+
+                case "V":
+                    for(i=0;i<word.length;i++) {
+                        if (word.charAt(i) == "V") {
+                            revealLetter(i,"V");
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        wrongGuess("V");
+                    }
+                    break;
+
+                case "W":
+                    for(i=0;i<word.length;i++) {
+                        if (word.charAt(i) == "W") {
+                            revealLetter(i,"W");
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        wrongGuess("W");
+                    }
+                    break;
+
+                case "X":
+                    for(i=0;i<word.length;i++) {
+                        if (word.charAt(i) == "X") {
+                            revealLetter(i,"X");
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        wrongGuess("X");
+                    }
+                    break;
+
+                case "Y":
+                    for(i=0;i<word.length;i++) {
+                        if (word.charAt(i) == "Y") {
+                            revealLetter(i,"Y");
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        wrongGuess("Y");
+                    }
+                    break;
+
+                case "Z":
+                    for(i=0;i<word.length;i++) {
+                        if (word.charAt(i) == "Z") {
+                            revealLetter(i,"Z");
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        wrongGuess("Z");
+                    }
+                    break;
+
+
+            }
+        }
+
+        function revealLetter(index,charID) {
+            correct++;
+            var letter = document.getElementById("letter"+(index+1));
+            var score = parseInt(document.getElementById("score").innerHTML);
+            var char = document.getElementById(charID);
+            char.className ="disabledCorrect";
+            if (letter.dataset.value != "") {
+                letter.value = letter.dataset.value;
+                score +=10;
+                document.getElementById("score").innerHTML = score.toString();
+            }
+            letter.dataset.value = "";
+            if (correct == word.length) {
+                alert("GOOD JOB, YOU WON!");
+            }
+        }
+
+        function wrongGuess(value) {
+            var score = parseInt(document.getElementById("score").innerHTML);
+            var letter = document.getElementById(value);
+            var X = document.getElementById("X"+mistakes);
+            score -=10;
+            X.className = "Xon";
+            document.getElementById("score").innerHTML = score.toString();
+            letter.setAttribute("disabled","true");
+            letter.className="disabled";
+            mistakes++;
+            if (mistakes==5) {
+                alert("YOU LOST!");
+//                GameOver();
+            }                
+        }
+        
+        function GameOver() {
+            alert("YOU LOST!");
+            location.reload();
+        }
+    </script>
+</head>
+<body>
+<header>
+    <div id="music">
+        <audio autoplay loop>
+            <source src="bgmusic.wav" type="audio/mpeg">
+            <p>If you can read this, your browser does not support the audio element.</p>
+        </audio>
+    </div>
+    <p align="center" class="text"><span style="color: red">Guess</span> <span style="color: yellow">The</span> <span style="color: white">WORD</span></p>
+<div id="divHeader" style="height: 95px; width: 100%; position: fixed">
+    <table style="position: absolute; bottom: 0"><tr><td class="text">Score</td><td class="padding"><p class="number" id="score">0</p><td style="padding-left: 200px" class="Xoff" id="X0">X</td><td class="Xoff" id="X1">X</td><td class="Xoff" id="X2">X</td><td class="Xoff" id="X3">X</td><td style="padding-right: 200px" class="Xoff" id="X4">X</td><td class="text">Hints</td><td class="number">3</td></tr></table>
+</div>
+</header>
+
+<main>
+    <section id="game">
+        <div id="divQuestion">
+            <p id="question" style="color: yellow; font-size: 22px; padding-left: 5px; font-weight: bold">What is your name?</p>
+        </div>
+        <div id="divWord" align="center">
+            <input type="text" value="W" disabled>
+            <input type="text" value="O" disabled>
+            <input type="text" value="R" disabled>
+            <input type="text" value="D" disabled>
+        </div>
+        <div id="divControls" align="center" style="margin-top: 40px">
+            <input style="margin-top: 60px" type="button" value="Generate" onclick="generateWord()">
+        </div>
+    </section>
+
+    <section id="letters">
+        <div id="divLetters" align="center" style="margin-top: -50px">
+            <div>
+                <input type="button" value="A" id="A" class="letter" onclick="checkLetter(this.value)">
+                <input type="button" value="B" id="B" class="letter" onclick="checkLetter(this.value)">
+                <input type="button" value="C" id="C" class="letter" onclick="checkLetter(this.value)">
+                <input type="button" value="D" id="D" class="letter" onclick="checkLetter(this.value)">
+                <input type="button" value="E" id="E" class="letter" onclick="checkLetter(this.value)">
+                <input type="button" value="F" id="F" class="letter" onclick="checkLetter(this.value)">
+                <input type="button" value="G" id="G" class="letter" onclick="checkLetter(this.value)">
+                <input type="button" value="H" id="H" class="letter" onclick="checkLetter(this.value)">
+                <input type="button" value="I" id="I" class="letter" onclick="checkLetter(this.value)">
+                <input type="button" value="J" id="J" class="letter" onclick="checkLetter(this.value)">
+                <input type="button" value="K" id="K" class="letter" onclick="checkLetter(this.value)">
+                <input type="button" value="L" id="L" class="letter" onclick="checkLetter(this.value)">
+                <input type="button" value="M" id="M" class="letter" onclick="checkLetter(this.value)">
+            </div>
+            <div style="margin-top: -50px">
+                <input type="button" value="N" id="N" class="letter" onclick="checkLetter(this.value)">
+                <input type="button" value="O" id="O" class="letter" onclick="checkLetter(this.value)">
+                <input type="button" value="P" id="P" class="letter" onclick="checkLetter(this.value)">
+                <input type="button" value="Q" id="Q" class="letter" onclick="checkLetter(this.value)">
+                <input type="button" value="R" id="R" class="letter" onclick="checkLetter(this.value)">
+                <input type="button" value="S" id="S" class="letter" onclick="checkLetter(this.value)">
+                <input type="button" value="T" id="T" class="letter" onclick="checkLetter(this.value)">
+                <input type="button" value="U" id="U" class="letter" onclick="checkLetter(this.value)">
+                <input type="button" value="V" id="V" class="letter" onclick="checkLetter(this.value)">
+                <input type="button" value="W" id="W" class="letter" onclick="checkLetter(this.value)">
+                <input type="button" value="X" id="X" class="letter" onclick="checkLetter(this.value)">
+                <input type="button" value="Y" id="Y" class="letter" onclick="checkLetter(this.value)">
+                <input type="button" value="Z" id="Z" class="letter" onclick="checkLetter(this.value)">
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>
