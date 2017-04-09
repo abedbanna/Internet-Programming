@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="kareem.js"></script>
+    <style>
+        .B
+          {
+              background-color:black;
+              color: aliceblue;
+              font-size: 60px;
+              text-align: center;
+          }
+        .A
+        {
+            background-color:aliceblue;
+            color: black;
+            font-size: 60px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+$("#output").mouseover(function () {
+    $(this).removeClass("B")
+    $(this).addClass("A");
+})
+            $("#output").mouseleave(function () {
+                $(this).removeClass("A")
+                $(this).addClass("B");
+            })
+        });
+
+    </script>
+</head>
+<body>
+<p  id="output" class="B">Hi From Jquery</p>
+</body>
+</html>

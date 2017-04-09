@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .s
+        {
+            width:50%;
+            height: 50%;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<script src="kareem.js"></script>
+    <script>
+    $(document).ready(function () {
+      $("#btnShow").click(function () {
+$("#imgPetra").show(3000);
+      });
+
+        $("#btnHide").click(function () {
+            $("#imgPetra").hide(3000);
+        });
+
+        $("#imgPetra").click(function () {
+            $(this).hide(5000);
+        });
+
+    });
+
+</script>
+</head>
+<body>
+<button id="btnShow">Show</button>
+<button id="btnHide">Hide</button>
+
+<img  id="imgPetra" class="s" src="1.jpg">
+
+
+
+</body>
+</html>
