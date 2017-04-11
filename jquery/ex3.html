@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="kareem.js"></script>
+    <style>
+        .Active
+        {
+          background-color: green;
+            font-size: 50px;
+            text-align: center;
+        }
+
+        .Inactive
+        {
+            background-color: red;
+            font-size: 50px;
+            text-align: center;
+
+        }
+    </style>
+<script>
+
+    $(document).ready(function () {
+        for(var i=1;i<=99;i++)
+        {
+
+            $("#myDiv").prepend("<input type=button class='Active' value='"+ i +"'>");
+        if (i %10==0)
+            $("#myDiv").prepend("<br>")
+        }
+
+        $(".Active").click(function () {
+          var id=$(this).val();
+           $(this).attr("disabled",true);
+           $(this).removeClass("Active");
+           $(this).addClass("Inactive");
+        });
+    })
+</script>
+</head>
+<body>
+<div id="myDiv">
+
+
+</div>
+</body>
+</html>
