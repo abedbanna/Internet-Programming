@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery.js"></script>
+    <style>
+        .odd
+        {
+            background-color: darkgray;
+            font-size: x-large;
+        }
+        .even
+        {
+            background-color: aliceblue;
+            font-size: x-large;
+        }
+        .del
+        {
+            width:32px;
+        }
+    </style>
+<script>
+    $(document).ready(function () {
+        $(".del").click("click",function () {
+            $(this).closest("<tr>").hide();
+        });
+
+var c="even";
+        $("#btnAdd").click(function () {
+            var id=$("#txtId").val();
+            var name=$("#txtName").val();
+            var dept=$("#txtDept").val();
+            var sal=$("#txtSalary").val();
+            if(c=="even")
+                c="odd"
+            else
+                c="even"
+
+            var str="<tr class='"+c+"'><td>"+id+"</td>"+
+                "<td>"+name+"</td>"+
+                "<td>"+sal+"</td>"+
+                "<td>"+dept+"</td>" +
+                "<td>" +
+                "<img class='del' src='images/del.png' >" +
+                "<img src='images/edit.png' width='32px'>" +
+                "</td>" +
+                "</tr>"
+
+            $("#txtId").val("")
+            $("#txtName").val("")
+            $("#txtSalary").val("")
+            $("#txtDept").val("")
+            $("#txtId").focus()
+                    $("#output").append(str);
+        })
+
+    });
+</script>
+    <style>
+        .tbl
+        {
+            border:double;
+            width:100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<form>
+    <table align="center">
+      <tr>
+          <td>
+          Id
+      </td><td>
+          <input type="text" id="txtId">
+      </td>
+      </tr>
+        <tr>
+            <td>
+                Name
+            </td><td>
+            <input type="text" id="txtName">
+        </td>
+        </tr>
+        <tr>
+            <td>
+                Salary
+            </td><td>
+            <input type="number" min =500 max="5000" step="500" id="txtSalary">
+        </td>
+        </tr>
+        <tr>
+            <td>
+                Dept
+            </td><td>
+            <input type="text" id="txtDept">
+        </td>
+        </tr>
+<tr>
+    <td colspan="2" align="center"><input type="button" value="Add" id="btnAdd"></td>
+</tr>
+    </table>
+    <hr>
+
+    <table  id="output" class="tbl">
+        <thead>
+        <tr>
+            <td colspan="5">
+                <h2>
+                    Employee Form
+                </h2>
+            </td>
+        </tr>
+        </thead>
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Salary</td>
+            <td>Dept</td>
+            <td>Action</td>
+        </tr>
+    </table>
+
+</form>
+</body>
+</html>
