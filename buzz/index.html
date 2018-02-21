@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+$(document).ready(function () {
+    var audioplayer = document.getElementById("timer-beep");
+    var tim;
+    var counter=12;
+    function timer() {
+         tim = setInterval(function () {
+            myTimer()
+        }, 1000);
+
+    }
+        function myTimer()
+        {
+
+            $("#h1").text(counter);
+            counter=counter-1
+            if (counter<=0)
+            {
+                audioplayer.load();
+                audioplayer.play();
+
+                $("#h1").text("");
+                clearInterval(tim)
+                counter=12
+
+
+
+
+            }
+
+
+
+    }
+
+    var sum=0;
+    $("#btnOne").click(function () {
+        clearInterval(tim)
+        counter=12
+        timer();
+        $("#myDivR").text("");
+
+        $("#myDiv").text("");
+        sum=0;
+        for(var i=0;i<=7;i++)
+        {
+            var n=parseInt(Math.random()*10);
+            if(Math.random()>0.7)
+                n=n*-1;
+
+            if(n==0)
+                n=1;
+          sum+=n;
+
+          if(sum<0) {
+              sum = sum - n;
+              n = n * -1
+          sum+=n;
+          }
+            $("#myDiv").append("<h1>"+n+"</h1>")
+
+        }
+
+
+    });
+    $("#btnResult").click(function () {
+        $("#myDiv").text("");
+        $("#myDiv").append("<p style='font-size: 128px;text-align:center'> "+sum+"</p>")
+        $("#h1").text("");
+        clearInterval(tim)
+        counter=12
+
+
+    });
+
+
+
+
+    $("#btnTwo").click(function () {
+        clearInterval(tim)
+        counter=12
+        timer();
+        $("#myDivR").text("");
+
+        $("#myDiv").text("");
+        sum=0;
+        for(var i=0;i<=2;i++)
+        {
+            var n=parseInt(Math.random()*100);
+            if(Math.random()>0.7)
+                n=n*-1;
+
+            if(n==0)
+                n=1;
+            sum+=n;
+
+            if(sum<0) {
+                sum = sum - n;
+                n = n * -1
+                sum+=n;
+            }
+            $("#myDiv").append("<h1>"+n+"</h1>")
+
+        }
+
+
+    });
+
+})
+
+    </script>
+</head>
+<body>
+
+<audio id="timer-beep">
+    <source src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/41203/beep.mp3"/>
+    <source src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/41203/beep.ogg" />
+</audio>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <p style="text-align: center;color: red;font-size: 120px" id="h1"></p>
+        </div>
+        <div class="col-sm-4">
+            <h3>Basel UCMas::: Test  </h3>
+
+            <table>
+                <tr><td><button id="btnOne" class="btn btn-success ">One Digit</button></td>
+                <td><button id="btnTwo" class="btn btn-info">Two Digits</button></td>
+                <td><button id="btnResult" class="btn btn-danger">Result</button></td></tr>
+                <tr><td colspan="2" style="text-align: center"><div id="myDiv"></div></td></tr>
+            </table>
+
+
+
+
+
+        </div>
+        <div class="col-sm-4">
+
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
