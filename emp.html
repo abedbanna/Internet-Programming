@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Form</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        $("#d1").hide();
+        $("#d2").hide();
+        $("#cboType").on('change',function () {
+          $("#d1").show();
+            $("#d2").show();
+
+
+            $("#lblSal").text("Basic");
+        })
+    })
+</script>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+<form>
+    <div class="form-group">
+    <label for="txtId">ID:</label>
+    <input type="text" class="form-control" name="txtId" id="txtId" placeholder="Enter ID">
+</div>
+    <div class="form-group">
+        <label for="txtName">Name:</label>
+        <input type="text" class="form-control" name="txtName" id="txtName" placeholder="Enter Name">
+    </div>
+    <div class="form-group">
+        <label for="cboType">Type:</label>
+        <select id="cboType" class="form-control" name="cboType">
+            <option value="1">Full Time</option>
+            <option value="2">Part Time</option>
+        </select>
+    </div>
+    <div id="d1" class="form-group">
+        <label for="txtSal" id="lblSal">---</label>
+        <input type="text" class="form-control" name="txtSal" id="txtSal" placeholder="Enter Salary">
+    </div>
+    <div id="d2" class="form-group">
+        <label for="txtComm">Comm:</label>
+        <input type="text" class="form-control" name="txtComm" id="txtComm" placeholder="Enter Comm ">
+    </div>
+    <div class="form-group">
+       <input type="submit" class="btn btn-success">
+    </div>
+</form>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+
+</div>
+
+</body>
+</html>
