@@ -3,7 +3,7 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "empdb";
-$id=$_GET['txtEmpNo'];
+$id= mysql_escape_string($_GET['txtEmpNo']); // filter the GET input to prevent SQL injection in line 16.
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
